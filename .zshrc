@@ -1,5 +1,5 @@
 autoload -U compinit
-compinit
+compinit -i
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -45,11 +45,20 @@ alias amend="git commit --amend --no-edit"
 alias cpwd="pwd | tr -d '\n' | xclip -in -selection clipboard && echo 'pwd copied to clipboard'"
 alias bajanda="shutdown +0"
 alias cls="clear"
-alias flt="flutter"
-alias flt1="$HOME/dev/flutter1/bin/flutter"
-alias flt2="$HOME/dev/flutter2/bin/flutter"
-alias subl="flatpak run com.sublimetext.three"
-alias yarn="/usr/local/lib/node_modules/yarn/bin/yarn"
+alias flt="fvm flutter"
+alias fl="fvm flutter"
+alias flutter="fvm flutter"
+
+
+case "$OSTYPE" in
+   linux*)
+      alias start="xdg-open"
+      alias open="xdg-open"
+      ;;
+   darwin*)
+      alias start="open"
+      ;;
+esac
 
 # END aliases #################################################################
 
@@ -60,18 +69,10 @@ alias yarn="/usr/local/lib/node_modules/yarn/bin/yarn"
 # Custom folder on path for scripts, binaries etc
 export PATH="$PATH:$HOME/dev/onPath"
 
-# Flutter
-export PATH="$PATH:$HOME/dev/flutter/bin"
-export PATH="$PATH:$HOME/dev/flutter/bin/cache/dart-sdk/bin/"
-export PATH="$PATH:$HOME/dev/flutter/.pub-cache/bin/"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# Android related
-export ANDROID_HOME="$HOME/dev/androidSDK"
-export PATH="$PATH:$ANDROID_HOME/emulator"
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME"
+# Flutter and Dart
+export PATH="$PATH:$HOME/fvm/versions/stable/bin/cache/dart-sdk/bin/" # Dart sdk from latest stable flutter release
+export PATH="$PATH":"$HOME/.pub-cache/bin" # Global packages
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Go
 export GOROOT="$HOME/dev/go"
@@ -87,15 +88,15 @@ export GOPATH="$HOME/dev/go-package-cache"
 
 #Python
 # Add python packages executables to path
-export PATH="$PATH:$HOME/.local/bin"
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="$PATH:$HOME/.local/bin"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # Browser
 
-export CHROME_EXECUTABLE="/usr/bin/microsoft-edge"
+export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
 
 # END custom paths ############################################################
 
@@ -145,3 +146,12 @@ fi
 
 
 eval "$(starship init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/croxx/.dart-cli-completion/zsh-config.zsh ]] && . /home/croxx/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
