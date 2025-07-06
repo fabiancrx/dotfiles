@@ -75,9 +75,9 @@ export PATH="$PATH":"$HOME/.pub-cache/bin" # Global packages
 export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Go
-export GOROOT="$HOME/dev/go"
-export PATH="$GOROOT/bin:$PATH"
-export GOPATH="$HOME/dev/go-package-cache"
+# export GOROOT="$HOME/dev/go"
+# export PATH="$GOROOT/bin:$PATH"
+# export GOPATH="$HOME/dev/go-package-cache"
 
 # Rust
 # export PATH="$HOME/.cargo/bin:$PATH"
@@ -96,7 +96,7 @@ export GOPATH="$HOME/dev/go-package-cache"
 
 # Browser
 
-export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
+# export CHROME_EXECUTABLE="/opt/brave.com/brave/brave-browser"
 
 # END custom paths ############################################################
 
